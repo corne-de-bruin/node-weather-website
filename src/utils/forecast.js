@@ -4,12 +4,20 @@ const createForecastMessage = ({ currently, daily }) => {
     const currentTemperature = currently.temperature;
     const rainChange = currently.precipProbability * 100;
     const dailySummary = daily.data[0].summary;
+    const dailyHigh = daily.data[0].temperatureHigh;
+    const dailyLow = daily.data[0].temperatureLow;
     return dailySummary +
         ' Op dit moment is het ' +
         currentTemperature +
         ' graden. Er is ' +
         rainChange + '%' +
-        ' kans op regen.';
+        ' kans op regen. ' +
+        'Vandaag wordt het maximaal ' +
+        dailyHigh +
+        ' graden en minimaal ' +
+        dailyLow +
+        ' graden.';
+
 }
 
 const forecast = (latitude, longitude, callback) => {
